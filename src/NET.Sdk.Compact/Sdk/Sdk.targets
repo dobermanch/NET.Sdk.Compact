@@ -1,0 +1,82 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <NETBuildTasksDirectoryRoot>$(MSBuildThisFileDirectory)..\tools\</NETBuildTasksDirectoryRoot>
+    <NETBuildTasksTFM Condition=" '$(MSBuildRuntimeType)' == 'Core'">netstandard2.0</NETBuildTasksTFM>
+    <NETBuildTasksTFM Condition=" '$(NETBuildTasksTFM)' == ''">net461</NETBuildTasksTFM>
+    <NETBuildTasksDirectory>$(NETBuildTasksDirectoryRoot)$(NETBuildTasksTFM)\</NETBuildTasksDirectory>
+    <NETBuildTasksAssembly>$(NETBuildTasksDirectory)NET.Sdk.Compact.dll</NETBuildTasksAssembly>
+    <LangVersion Condition="'$(LangVersion)' == ''">3</LangVersion>
+    <NETCompactImplicitPackageVersion Condition="'$(NETCompactImplicitPackageVersion)' ==''">#{Build.BuildNumber}#</NETCompactImplicitPackageVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net35-cf'">
+    <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>CompactFramework</TargetFrameworkProfile>
+    <PlatformFamilyName>WindowsCE</PlatformFamilyName>
+    <DefineConstants>$(DefineConstants);$(PlatformFamilyName);COMPACT</DefineConstants>
+    <GenerateAssemblyFileVersionAttribute>False</GenerateAssemblyFileVersionAttribute>
+    <GenerateSupportedRuntime>False</GenerateSupportedRuntime>
+    <_GCTPDIKeepDuplicates>false</_GCTPDIKeepDuplicates>
+    <_GCTPDIKeepMetadata>CopyToPublishDirectory;TargetPath;AddToFastStorage</_GCTPDIKeepMetadata>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFrameworkIdentifier)' == '.NETFramework' and '$(TargetFrameworkVersion)' == 'v3.5' and '$(TargetFrameworkProfile)' == 'CompactFramework' and '$(OS)' == 'Windows_NT' and '$(RuntimeIdentifier)' == ''">
+    <_UsingDefaultRuntimeIdentifier>true</_UsingDefaultRuntimeIdentifier>
+    <RuntimeIdentifier>wince-arm</RuntimeIdentifier>
+    <PlatformTarget>arm</PlatformTarget>
+  </PropertyGroup>
+
+  <ItemGroup Condition=" ('$(TargetFrameworkIdentifier)' == '.NETFramework') And ('$(TargetFrameworkVersion)' == 'v3.5') ">
+    <PackageReference Include="NET.Compact.Library"
+                      Version="$(NETCompactImplicitPackageVersion)"
+                      IsImplicitlyDefined="true"
+                      PrivateAssets="All"
+                      Publish="true" />
+  </ItemGroup>
+
+  <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
+
+  <PropertyGroup>
+    <DefaultImplicitPackages>$(DefaultImplicitPackages);NET.Compact.Library</DefaultImplicitPackages>
+  </PropertyGroup>
+
+  <UsingTask TaskName="NET.Sdk.Compact.PackCabTask"
+             AssemblyFile="$(NETBuildTasksAssembly)" />
+
+  <Target Name="PublishCab"
+          Condition="'$(OS)' == 'Windows_NT' and '$(TargetFramework)' == 'net35-cf' and '$(_IsExecutable)' == 'true'"
+          AfterTargets="Publish">
+
+    <PropertyGroup>
+      <CabOutputPath Condition="'$(CabOutputPath)' == ''">$(PublishDir)</CabOutputPath>
+      <EnableAddToStartup Condition="'$(EnableAddToStartup)' == ''">True</EnableAddToStartup>
+      <FastStorageRootDirName Condition="'$(FastStorageRootDirName)' == ''">MMSI</FastStorageRootDirName>
+    </PropertyGroup>
+
+    <ConvertToAbsolutePath Paths="$(CabOutputPath)">
+      <Output TaskParameter="AbsolutePaths" PropertyName="CabOutputAbsolutePath" />
+    </ConvertToAbsolutePath>
+
+    <ItemGroup>
+      <CabFiles Include="@(ResolvedFileToPublish)">
+        <CabPath>$([System.IO.Path]::GetDirectoryName('%(RelativePath)'))</CabPath>
+        <AddToStartup Condition="'$(EnableAddToStartup)' == 'true' and '$([System.IO.Path]::GetFileName(%(RelativePath)))' == '$(TargetFileName)'">True</AddToStartup>
+        <AddToPrograms Condition="'$([System.IO.Path]::GetFileName(%(RelativePath)))' == '$(TargetFileName)'">True</AddToPrograms>
+        <AddToFavorites Condition="'$([System.IO.Path]::GetFileName(%(RelativePath)))' == '$(TargetFileName)'">True</AddToFavorites>
+      </CabFiles>
+    </ItemGroup>
+
+    <PackCabTask ToolPath="$(NETBuildTasksDirectoryRoot)"
+                 CabFiles="@(CabFiles)"
+                 CabOutputPath="$(CabOutputAbsolutePath)"
+                 CabCompany="$(Company)"
+                 CabAppName="$(Product)"
+                 CabVersion="$(Version)"
+                 FastStorageRootDirName="$(FastStorageRootDirName)" />
+
+  </Target>
+
+</Project>

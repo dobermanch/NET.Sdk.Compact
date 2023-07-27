@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FileList Redist="Microsoft-Windows-CLRCoreComp.3.5" Name=".NET Compact Framework 3.5">
+  <File AssemblyName="CustomMarshalers" Version="3.5.0.0" PublicKeyToken="969db8053d3322ac" Culture="neutral" ProcessorArchitecture="MSIL" InGac="true" />
+  <File AssemblyName="Microsoft.ServiceModel.Channels.Mail" Version="3.5.0.0" PublicKeyToken="969db8053d3322ac" Culture="neutral" ProcessorArchitecture="MSIL" InGac="true" />
+  <File AssemblyName="Microsoft.ServiceModel.Channels.Mail.WindowsMobile" Version="3.5.0.0" PublicKeyToken="969db8053d3322ac" Culture="neutral" ProcessorArchitecture="MSIL" InGac="true" />
+  <File AssemblyName="Microsoft.VisualBasic" Version="8.1.0.0" PublicKeyToken="969db8053d3322ac" Culture="neutral" ProcessorArchitecture="MSIL" InGac="true" />
+  <File AssemblyName="Microsoft.WindowsCE.Forms" Version="3.5.0.0" PublicKeyToken="969db8053d3322ac" Culture="neutral" ProcessorArchitecture="MSIL" InGac="true" />
+  <File AssemblyName="Microsoft.WindowsMobile.DirectX" Version="3.5.0.0" PublicKeyToken="969db8053d3322ac" Culture="neutral" ProcessorArchitecture="MSIL" InGac="true" />
+  <File AssemblyName="mscorlib" Version="3.5.0.0" PublicKeyToken="969db8053d3322ac" Culture="neutral" ProcessorArchitecture="MSIL" InGac="true" />
+  <File AssemblyName="System.Core" Version="3.5.0.0" PublicKeyToken="969db8053d3322ac" Culture="neutral" ProcessorArchitecture="MSIL" InGac="true" />
+  <File AssemblyName="System.Data.DataSetExtensions" Version="3.5.0.0" PublicKeyToken="969db8053d3322ac" Culture="neutral" ProcessorArchitecture="MSIL" InGac="true" />
+  <File AssemblyName="System.Data" Version="3.5.0.0" PublicKeyToken="969db8053d3322ac" Culture="neutral" ProcessorArchitecture="MSIL" InGac="true" />
+  <File AssemblyName="System" Version="3.5.0.0" PublicKeyToken="969db8053d3322ac" Culture="neutral" ProcessorArchitecture="MSIL" InGac="true" />
+  <File AssemblyName="System.Drawing" Version="3.5.0.0" PublicKeyToken="969db8053d3322ac" Culture="neutral" ProcessorArchitecture="MSIL" InGac="true" />
+  <File AssemblyName="System.Messaging" Version="3.5.0.0" PublicKeyToken="969db8053d3322ac" Culture="neutral" ProcessorArchitecture="MSIL" InGac="true" />
+  <File AssemblyName="System.Net.IrDA" Version="3.5.0.0" PublicKeyToken="969db8053d3322ac" Culture="neutral" ProcessorArchitecture="MSIL" InGac="true" />
+  <File AssemblyName="System.Runtime.Serialization" Version="3.5.0.0" PublicKeyToken="969db8053d3322ac" Culture="neutral" ProcessorArchitecture="MSIL" InGac="true" />
+  <File AssemblyName="System.ServiceModel" Version="3.5.0.0" PublicKeyToken="969db8053d3322ac" Culture="neutral" ProcessorArchitecture="MSIL" InGac="true" />
+  <File AssemblyName="System.Web.Services" Version="3.5.0.0" PublicKeyToken="969db8053d3322ac" Culture="neutral" ProcessorArchitecture="MSIL" InGac="true" />
+  <File AssemblyName="System.Windows.Forms" Version="3.5.0.0" PublicKeyToken="969db8053d3322ac" Culture="neutral" ProcessorArchitecture="MSIL" InGac="true" />
+  <File AssemblyName="System.Xml" Version="3.5.0.0" PublicKeyToken="969db8053d3322ac" Culture="neutral" ProcessorArchitecture="MSIL" InGac="true" />
+  <File AssemblyName="System.Xml.Linq" Version="3.5.0.0" PublicKeyToken="969db8053d3322ac" Culture="neutral" ProcessorArchitecture="MSIL" InGac="true" />
+</FileList>

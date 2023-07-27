@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <NoBuild>True</NoBuild>
+    <IncludeBuildOutput>False</IncludeBuildOutput>
+    <EnableDefaultNoneItems>False</EnableDefaultNoneItems>
+    <DevelopmentDependency>True</DevelopmentDependency>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>NETCompact.Library</PackageId>
+    <Title>NETCompact.Library</Title>
+    <Authors>Sergii Chevkota, Andrii Tararaka</Authors>
+    <Description>Microsoft .NET Compact Framework 3.5 Reference Assemblies</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include=".NETFramework/**/*" Pack="True" PackagePath="build/.NETFramework" />
+    <None Include="NETCompact.Library.targets" Pack="True" PackagePath="build" />
+  </ItemGroup>
+
+</Project>

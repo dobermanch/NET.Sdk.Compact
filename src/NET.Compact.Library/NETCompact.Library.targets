@@ -1,0 +1,33 @@
+﻿<Project>
+
+  <PropertyGroup>
+    <NETCompactLibraryPackageVersion>#{Build.BuildNumber}#</NETCompactLibraryPackageVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" ('$(TargetFrameworkIdentifier)' == '.NETFramework') And ('$(TargetFrameworkVersion)' == 'v3.5') ">
+    <TargetFrameworkRootPath>$(MSBuildThisFileDirectory)</TargetFrameworkRootPath>
+    <EnableFrameworkPathOverride>false</EnableFrameworkPathOverride>
+    <NoStdLib>true</NoStdLib>
+    <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences>
+  </PropertyGroup>
+
+  <ItemGroup Condition=" ('$(TargetFrameworkIdentifier)' == '.NETFramework') And ('$(TargetFrameworkVersion)' == 'v3.5') And ('$(TargetFrameworkProfile)' == '') ">
+    <Reference Include="$(TargetFrameworkRootPath)/$(TargetFrameworkIdentifier)/$(TargetFrameworkVersion)/*.dll">
+      <Private>false</Private>
+      <Visible>false</Visible>
+      <NuGetPackageId>NET.Compact.Library</NuGetPackageId>
+      <NuGetPackageVersion>$(NETCompactLibraryPackageVersion)</NuGetPackageVersion>
+    </Reference>
+    <Reference Remove="$(TargetFrameworkRootPath)/$(TargetFrameworkIdentifier)/$(TargetFrameworkVersion)/System.EnterpriseServices.Wrapper.dll" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" ('$(TargetFrameworkIdentifier)' == '.NETFramework') And ('$(TargetFrameworkVersion)' == 'v3.5') And ('$(TargetFrameworkProfile)' == 'CompactFramework') ">
+    <Reference Include="$(TargetFrameworkRootPath)/$(TargetFrameworkIdentifier)/$(TargetFrameworkVersion)/Profile/$(TargetFrameworkProfile)/*.dll">
+      <Private>false</Private>
+      <Visible>false</Visible>
+      <NuGetPackageId>NET.Compact.Library</NuGetPackageId>
+      <NuGetPackageVersion>$(NETCompactLibraryPackageVersion)</NuGetPackageVersion>
+    </Reference>
+  </ItemGroup>
+
+</Project>

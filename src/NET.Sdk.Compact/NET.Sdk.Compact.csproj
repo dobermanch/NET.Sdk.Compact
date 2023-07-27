@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <DevelopmentDependency>True</DevelopmentDependency>
+    <EnableDefaultNoneItems>False</EnableDefaultNoneItems>
+    <BuildOutputTargetFolder>tools</BuildOutputTargetFolder>
+    <Serviceable>True</Serviceable>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>NET.Sdk.Compact</PackageId>
+    <Title>NET.Sdk.Compact</Title>
+    <Authors>Sergii Chevkota, Andrii Tararaka</Authors>
+    <Description>The MSBuild targets and properties for building and publishing as CAB .NET 3.5 Compact Framework projects in the Visual Studio 2017+ or by the MSBuild 15+.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="sdk/**/*" Pack="True" PackagePath="sdk" />
+    <None Include="tools/**/*.*" Pack="True" PackagePath="tools" />
+  </ItemGroup>
+
+  <ItemDefinitionGroup>
+    <PackageReference>
+      <PrivateAssets>All</PrivateAssets>
+      <Publish>true</Publish>
+    </PackageReference>
+  </ItemDefinitionGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Build.Utilities.Core" Version="15.9.20" />
+  </ItemGroup>
+
+</Project>
